@@ -1,0 +1,10 @@
+#!/bin/bash
+
+SleepTime=$(cat config.ini)
+while [ 1 ]
+do
+wget -q -O file https://pogoda.tut.by/city/minsk/
+
+egrep    '<span class="temp-i">[+-][0-9]+&deg;</span></div>$' file | egrep -o '[+-][0-9]+'
+sleep $SleepTime
+done
